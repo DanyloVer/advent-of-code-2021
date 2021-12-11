@@ -1,3 +1,5 @@
+import re
+from tqdm import tqdm
 import numpy as np
 
 
@@ -7,6 +9,9 @@ class Chunk:
         self.close_sign = close_sign
         self.offsprings = []
         self.parent_chunk = parent_chunk
+    # def add_offspring(self):
+    #     self.offsprings.append(Chunk())
+    #     return self.offsprings[-1]
 
 
 class DotDict(dict):
@@ -115,6 +120,9 @@ def pars_line(line):
     for _ in line:
         if _ in MAPPING.open_symbols:
             offspring = Chunk(open_sign=_, parent_chunk=working_chunk)
+            # if parent is None:
+            #     parent = offspring
+            # if working_chunk is not None:
             working_chunk.offsprings.append(offspring)
             working_chunk = offspring
         elif _ in MAPPING.close_symbols:
