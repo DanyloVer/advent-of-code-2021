@@ -97,6 +97,7 @@ def task_2(population, is_test):
     else:
         print(f'Task_2: The result is {task_output}')
 
+
 if __name__ == '__main__':
     day11(is_test=True)
     day11()
